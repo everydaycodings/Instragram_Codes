@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Everydaycodings</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'everydaycodings/css/default.css' %} ">
+    <link id="theme-style" rel="stylesheet" type="text/css" href="">
+</head>
+
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <section class="s1">
+        <div class="main-container">
+            <div class="greeting-wrapper">
+                <h1>Hi, I'm Everydaycodings</h1>
+            </div>
+
+
+            <div class="intro-wrapper">
+                <div class="nav-wrapper">
+
+                    <!-- Link around dots-wrapper added after tutorial video -->
+                    <a href="{% url 'index' %}">
+                        <div class="dots-wrapper">
+                            <div id="dot-1" class="browser-dot"></div>
+                            <div id="dot-2" class="browser-dot"></div>
+                            <div id="dot-3" class="browser-dot"></div>
+                        </div>
+                    </a>
+
+
+                    <ul id="navigation">
+                        <li><a href="#contact">Contact</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="left-column">
+                    <img id="profile_pic" src="{% static 'everydaycodings/images/everydaycodings.png' %}">
+                    <br>
+                    <h5 style="text-align: center;line-height: 0;">Personalize Theme</h5>
+
+                    <div id="theme-options-wrapper">
+                        <div data-mode="light" id="light-mode" class="theme-dot"></div>
+                        <div data-mode="blue" id="blue-mode" class="theme-dot"></div>
+                        <div data-mode="green" id="green-mode" class="theme-dot"></div>
+                        <div data-mode="purple" id="purple-mode" class="theme-dot"></div>
+                    </div>
+
+                    <p id="settings-note">*Theme settings will be saved for<br>your next vist</p>
+                </div>
+
+                <div class="right-column">
+
+                    <div id="preview-shadow">
+                        <div id="preview">
+                            <div id="corner-tl" class="corner"></div>
+                            <div id="corner-tr" class="corner"></div>
+                            <h3>What I Do</h3>
+                            <Always curious to learn cutting edge technologyp>I am a Python Developer. A bit enthusiast towards web development. Recanty Completed Advance Python Programming and now ahead of A.I and M.L</p>
+                                <div id="corner-br" class="corner"></div>
+                                <div id="corner-bl" class="corner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="s2">
+        <div class="main-container">
+
+            <div class="about-wrapper">
+                <div class="about-me">
+                    <h4>More about me</h4>
+
+                    <p>I build new projects just to tickle my brain and have Fun.</p>
+
+                    <p>I take interviews in search of a great team & projects that interest me.</p>
+
+
+                    <hr>
+
+                    <h4>TOP EXPERTISE</h4>
+
+                    <p>Python developer with primary focus on Django + A.I: <a target="_blank" href="{% static 'everydaycodings/files/resume.pdf' %}">Download Resume</a></p>
+
+                    <div id="skills">
+                        <ul>
+                            <li>Python</li>
+                            <li>Django</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Postgres</li>
+                        </ul>
+
+                        <ul>
+                            <li>Heroku</li>
+                            <li>HTML/CSS</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <div class="social-links">
+                    <img id="social_img" src="{% static 'everydaycodings/images/follow.png' %}">
+                    <h3>Find me on Instagram & Github</h3>
+
+                    <a target="_blank" href="https://www.instagram.com/everydaycodings/">Instagram: @everydaycodings</a>
+                    <br>
+                    <a target="_blank" href="https://github.com/everydaycodings">Github: @everydaycodings</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="s1">
+        <div class="main-container">
+            <h3 style="text-align: center;">Some of my past projects</h3>
+
+            <div class="post-wrapper">
+                {% for project in projects %}
+                <div>
+                    <div class="post">
+                        <img class="thumbnail" src="{{project.img.url}}">
+                        <div class="post-preview">
+                            <h6 class="post-title">{{project.title}}</h6>
+                            <p class="post-intro">{{project.short_desc}}
+                            </p>
+                            <a href="/single_post/{{project.id}}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div>
+                    <div class="post">
+                        <img class="thumbnail" src="{% static 'everydaycodings/images/ecom.jpg' %}">
+                        <div class="post-preview">
+                            <h6 class="post-title">Online Store - CoursePost Title</h6>
+                            <p class="post-intro">Online store with paypal payments intergration and guest user shopping
+                            </p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="post">
+                        <img class="thumbnail" src="{% static 'everydaycodings/images/membership site.jpg' %}">
+                        <div class="post-preview">
+                            <h6 class="post-title">Membership Website</h6>
+                            <p class="post-intro">Modulized guide for online courses with step by step intructions</p>
+                            <a href="post.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="s2">
+        <div class="main-container">
+            <a href=""></a>
+            <h3 style="text-align: center;">Get In Touch</h3>
+
+            <form id="contact-form" method="POST" action="">
+                {% csrf_token %}
+                <a name="contact"></a>
+
+                <label>Name</label>
+                <input class="input-field" type="text" name="name" required="" placeholder="Name">
+
+                <label>Subject</label>
+                <input class="input-field" type="text" name="subject" required="" placeholder="Subject">
+
+                <label>Email</label>
+                <input class="input-field" type="email" name="email" required="" placeholder="Email">
+
+                <label>Message</label>
+                <textarea class="input-field" name="message" required="" placeholder="Enter Your Message"></textarea>
+
+                <input id="submit-btn" type="submit" value="Send">
+            </form>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        console.log('Its working')
+
+        let theme = localStorage.getItem('theme')
+
+        if (theme == null) {
+            setTheme('light')
+        } else {
+            setTheme(theme)
+        }
+
+        let themeDots = document.getElementsByClassName('theme-dot')
+
+
+        for (var i = 0; themeDots.length > i; i++) {
+            themeDots[i].addEventListener('click', function() {
+                let mode = this.dataset.mode
+                console.log('Option clicked:', mode)
+                setTheme(mode)
+            })
+        }
+
+        function setTheme(mode) {
+            if (mode == 'light') {
+                document.getElementById('theme-style').href = "{% static 'everydaycodings/css/default.css' %}"
+            }
+
+            if (mode == 'blue') {
+                document.getElementById('theme-style').href = "{% static 'everydaycodings/css/blue.css' %}"
+            }
+
+            if (mode == 'green') {
+                document.getElementById('theme-style').href = "{% static 'everydaycodings/css/green.css' %}"
+            }
+
+            if (mode == 'purple') {
+                document.getElementById('theme-style').href = "{% static 'everydaycodings/css/purple.css' %}"
+            }
+
+            localStorage.setItem('theme', mode)
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
